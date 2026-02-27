@@ -12,6 +12,7 @@ TagManager:
   - Enemy
   - PowerUp
   - Pickable
+  - Gun
   layers:
   - Default
   - TransparentFX

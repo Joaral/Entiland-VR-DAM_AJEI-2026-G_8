@@ -8,7 +8,11 @@ namespace Autohand.Demo
 
     public class OURPISTOL : MonoBehaviour
     {
-        public bool loaded = false;
+        public bool loaded = true;
+        public int ammo;
+        public int ammoMax = 16;
+        
+
         public Rigidbody body;
 
         public Transform barrelTip;
@@ -22,6 +26,7 @@ namespace Autohand.Demo
 
         private void Start()
         {
+            ammo = ammoMax;
             if (body == null && GetComponent<Rigidbody>() != null)
                 body = GetComponent<Rigidbody>();
         }
@@ -52,6 +57,11 @@ namespace Autohand.Demo
                 Debug.DrawRay(barrelTip.position, barrelTip.forward * range, Color.red, 1);
 
             body.AddForce(barrelTip.transform.up * recoilPower * 5, ForceMode.Impulse);
+            ammo--;
+            if (ammo == 0)
+            {
+                loaded = false;
+            }
         }
     }
 }
